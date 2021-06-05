@@ -203,7 +203,7 @@ class HomePage extends StatefulWidget {
       {Key key,
       @required this.automatic,
       @required this.refreshCartNumber,
-      this.address})
+      @required this.address})
       : super(key: key);
   @override
   _HomePageState createState() => _HomePageState();
@@ -530,11 +530,11 @@ class _HomePageState extends State<HomePage> {
                   ],
                 ),
               ),
-              PopularFoodsWidget(cartData: cartdata),
+              PopularFoodsWidget(cartData: cartdata, address: widget.address),
               SizedBox(
                 height: mediaQuery.size.height * 15 / 700,
               ),
-              BestFoodWidget(cartData: cartdata),
+              BestFoodWidget(cartData: cartdata, address: widget.address),
             ],
           ),
         ),
@@ -689,8 +689,10 @@ class _HomePageState extends State<HomePage> {
 }
 
 class PopularFoodsWidget extends StatefulWidget {
+  String address;
   CartData cartData;
-  PopularFoodsWidget({@required this.cartData});
+  PopularFoodsWidget(
+      {@required this.cartData, @required @required this.address});
   @override
   _PopularFoodsWidgetState createState() => _PopularFoodsWidgetState();
 }
@@ -718,7 +720,7 @@ class _PopularFoodsWidgetState extends State<PopularFoodsWidget> {
         children: <Widget>[
           PopularFoodTitle(),
           Expanded(
-            child: PopularFoodItems(),
+            child: PopularFoodItems(address: widget.address),
           )
         ],
       ),
@@ -727,7 +729,15 @@ class _PopularFoodsWidgetState extends State<PopularFoodsWidget> {
 }
 
 class PopularFoodTiles extends StatefulWidget {
-  String name, chefAddress, dishName, image, time, chefId, toTime, fromTime;
+  String name,
+      address,
+      chefAddress,
+      dishName,
+      image,
+      time,
+      chefId,
+      toTime,
+      fromTime;
   bool self_delivery;
   dynamic rating;
   int quantity, count;
@@ -736,6 +746,7 @@ class PopularFoodTiles extends StatefulWidget {
   Function refresh;
   PopularFoodTiles(
       this.name,
+      @required this.address,
       this.chefAddress,
       this.rating,
       this.price,
@@ -1037,7 +1048,7 @@ class _PopularFoodTilesState extends State<PopularFoodTiles> {
                               context,
                               MaterialPageRoute(
                                 builder: (context) => MenuOptionSide(
-                                    automatic: false, address: _address),
+                                    automatic: false, address: widget.address),
                               ),
                             );
                           });
@@ -1116,9 +1127,11 @@ class PopularFoodTitle extends StatelessWidget {
 }
 
 class PopularFoodItems extends StatefulWidget {
+  String address;
   CartData cartData;
   Function refreshCartNumber;
-  PopularFoodItems({this.cartData, this.refreshCartNumber});
+  PopularFoodItems(
+      {this.cartData, this.refreshCartNumber, @required this.address});
   @override
   _PopularFoodItemsState createState() => _PopularFoodItemsState();
 }
@@ -1268,6 +1281,7 @@ class _PopularFoodItemsState extends State<PopularFoodItems> {
                         padding: const EdgeInsets.all(8.0),
                         child: PopularFoodTiles(
                             data.name,
+                            widget.address,
                             data.chefAddress,
                             data.getRating(),
                             data.getPrice(),
@@ -1306,8 +1320,9 @@ class _PopularFoodItemsState extends State<PopularFoodItems> {
 }
 
 class BestFoodWidget extends StatefulWidget {
+  String address;
   CartData cartData;
-  BestFoodWidget({@required this.cartData});
+  BestFoodWidget({@required this.cartData, @required this.address});
   @override
   _BestFoodWidgetState createState() => _BestFoodWidgetState();
 }
@@ -1335,7 +1350,7 @@ class _BestFoodWidgetState extends State<BestFoodWidget> {
         children: <Widget>[
           BestFoodTitle(),
           Expanded(
-            child: BestFoodList(),
+            child: BestFoodList(address: widget.address),
           )
         ],
       ),
@@ -1371,7 +1386,15 @@ class BestFoodTitle extends StatelessWidget {
 }
 
 class BestFoodTiles extends StatefulWidget {
-  String name, chefAddress, dishName, image, time, chefId, toTime, fromTime;
+  String name,
+      address,
+      chefAddress,
+      dishName,
+      image,
+      time,
+      chefId,
+      toTime,
+      fromTime;
   bool self_delivery;
   dynamic rating;
   int quantity, count;
@@ -1380,6 +1403,7 @@ class BestFoodTiles extends StatefulWidget {
   Function refresh;
   BestFoodTiles(
       this.name,
+      this.address,
       this.chefAddress,
       this.rating,
       this.price,
@@ -1679,7 +1703,7 @@ class _BestFoodTilesState extends State<BestFoodTiles> {
                               context,
                               MaterialPageRoute(
                                 builder: (context) => MenuOptionSide(
-                                    automatic: false, address: _address),
+                                    automatic: false, address: widget.address),
                               ),
                             );
                           });
@@ -1731,9 +1755,10 @@ class _BestFoodTilesState extends State<BestFoodTiles> {
 }
 
 class BestFoodList extends StatefulWidget {
+  String address;
   CartData cartData;
   Function refreshCartNumber;
-  BestFoodList({this.refreshCartNumber});
+  BestFoodList({this.refreshCartNumber, @required this.address});
   @override
   _BestFoodListState createState() => _BestFoodListState();
 }
@@ -1887,6 +1912,7 @@ class _BestFoodListState extends State<BestFoodList> {
                         padding: const EdgeInsets.all(8.0),
                         child: BestFoodTiles(
                             data.name,
+                            widget.address,
                             data.chefAddress,
                             data.getRating(),
                             data.getPrice(),
