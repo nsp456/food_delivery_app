@@ -53,13 +53,6 @@ class _EatTomorrowState extends State<EatTomorrow> {
     setState(() {
       dishes = [];
     });
-    // rebuildAllChildren(context);
-    // EatNow(cartData: new CartData());
-
-    // Navigator.push(context,
-    //     new MaterialPageRoute(builder: (context) => this.build(context)));
-    // Navigator.pushReplacement(context,
-    //     MaterialPageRoute(builder: (BuildContext context) => super.widget));
   }
 
   @override
@@ -424,26 +417,6 @@ class _SingleCardState extends State<SingleCard> {
                             padding:
                                 new EdgeInsets.fromLTRB(16.0, 10.0, 16.0, 10.0),
                           ),
-                          // Ink(
-                          //   decoration: ShapeDecoration(
-                          //     color: Colors.red,
-                          //     shape: CircleBorder(),
-                          //   ),
-                          //   child: IconButton(
-                          //   icon: Icon(
-                          //     Icons.add,
-                          //     color: Color.fromRGBO(232, 140, 48, 1),
-                          //   ),
-                          //   tooltip: 'Add',
-                          //   onPressed: () => {
-                          //     setState(() {
-                          //       widget.quantity =
-                          //           help.addQuantity(widget.quantity);
-                          //       print(widget.quantity);
-                          //     })
-                          //   },
-                          // ),
-                          // ),
                           IconButton(
                             icon: Icon(
                               Icons.remove_circle,
@@ -602,121 +575,9 @@ class _SingleCardState extends State<SingleCard> {
                         color: Colors.white,
                       ),
                     )),
-                // Positioned(
-                //   right: 3,
-                //   top: 3,
-                //   child: Container(
-                //     decoration: new BoxDecoration(
-                //       color: Colors.red.withOpacity(0.6),
-                //       borderRadius: BorderRadius.all(Radius.circular(10)),
-                //     ),
-                //     child: Text(""),
-                //     // (_counter ~/ 3600).toString() +
-                //     //     ":" +
-                //     //     ((_counter % 3600) ~/ 60).toString() +
-                //     //     ":" +
-                //     //     ((_counter % 60)).toString(),
-                //     // style: TextStyle(
-                //     //     fontSize: totalHeight * 12 / 700,
-                //     //     color: Colors.white,
-                //     //     fontWeight: FontWeight.bold),
-                //     // ),
-                //     padding: EdgeInsets.all(4.0),
-                //   ),
-                // )
               ])
             ]),
       ),
-      // child: Column(
-      //   children: [
-      //     ListTile(
-      //       leading: Padding(
-      //         padding: const EdgeInsets.all(8.0),
-      //         child: Icon(Icons.person),
-      //       ),
-      //       title: Text(name),
-      //       subtitle: Text(
-      //         'Rating ' + rating.toString() + ' ⭐',
-      //         style: TextStyle(color: Colors.black.withOpacity(0.6)),
-      //       ),
-      //     ),
-      //     Padding(
-      //       padding: const EdgeInsets.all(16.0),
-      //       child: Text(
-      //         dishName,
-      //         style: TextStyle(color: Colors.black.withOpacity(1)),
-      //       ),
-      //     ),
-      //     Padding(
-      //       padding: EdgeInsets.all(16.0),
-      //       child: Image(
-      //         image: AssetImage("assets/images/$image"),
-      //       ),
-      //     ),
-      //     ButtonBar(
-      //       alignment: MainAxisAlignment.spaceAround,
-      //       children: [
-      //         ButtonBar(
-      //           alignment: MainAxisAlignment.start,
-      //           children: [
-      //             Container(
-      //               child: Text("5",
-      //                   style: new TextStyle(
-      //                       color: Colors.white, fontWeight: FontWeight.w900)),
-      //               decoration: new BoxDecoration(
-      //                   borderRadius:
-      //                       new BorderRadius.all(new Radius.circular(10.0)),
-      //                   color: Colors.grey),
-      //               padding: new EdgeInsets.fromLTRB(16.0, 10.0, 16.0, 10.0),
-      //             ),
-      //             ElevatedButton(
-      //               onPressed: () {
-      //                 // Perform some action
-      //                 // f.getdata().map((e) => print(e.name));
-      //               },
-      //               style: ButtonStyle(
-      //                   backgroundColor:
-      //                       MaterialStateProperty.resolveWith<Color>(
-      //                     (Set<MaterialState> states) {
-      //                       if (states.contains(MaterialState.pressed))
-      //                         return Colors.green;
-      //                       return null; // Use the component's default.
-      //                     },
-      //                   ),
-      //                   shape: MaterialStateProperty
-      //                       .all<RoundedRectangleBorder>(RoundedRectangleBorder(
-      //                           borderRadius: BorderRadius.circular(240.0),
-      //                           side: BorderSide(color: Colors.transparent)))),
-      //               child: Icon(Icons.add),
-      //             ),
-      //             ElevatedButton(
-      //               onPressed: () {
-      //                 // Perform some action
-      //               },
-      //               style: ButtonStyle(
-      //                   shape: MaterialStateProperty
-      //                       .all<RoundedRectangleBorder>(RoundedRectangleBorder(
-      //                           borderRadius: BorderRadius.circular(140.0),
-      //                           side: BorderSide(color: Colors.transparent)))),
-      //               child: Icon(Icons.remove),
-      //             ),
-      //           ],
-      //         ),
-      //         ElevatedButton(
-      //           onPressed: () {
-      //             // Perform some action
-      //           },
-      //           style: ButtonStyle(
-      //               shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-      //                   RoundedRectangleBorder(
-      //                       borderRadius: BorderRadius.circular(140.0),
-      //                       side: BorderSide(color: Colors.transparent)))),
-      //           child: Icon(Icons.add_shopping_cart),
-      //         ),
-      //       ],
-      //     ),
-      //   ],
-      // ),
     );
   }
 }

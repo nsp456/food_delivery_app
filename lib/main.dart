@@ -23,7 +23,6 @@ class FoodMain extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      // initialRoute: '/home',
       routes: {
         '/signup': (context) => SignUp(),
         '/signin': (context) => SignIn(),
@@ -33,9 +32,6 @@ class FoodMain extends StatelessWidget {
               automatic: true,
             ),
       },
-      // home: FirebaseAuth.instance.currentUser == null
-      //     ? SignIn()
-      //     : MenuOptionSide(automatic: true),
       home: FutureBuilder(
           future: Auth().getCurrentUser(),
           builder: (context, snapshot) {
@@ -43,12 +39,7 @@ class FoodMain extends StatelessWidget {
               return Loading();
             } else {
               if (snapshot.hasData) {
-                // return MenuOptionSide(
-                //   automatic: true,
-                //   address: "Searching ..",
-                // );
                 return StartPage();
-                // return SearchWidget();
               } else {
                 return SignIn();
               }

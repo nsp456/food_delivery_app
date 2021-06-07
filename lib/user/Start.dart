@@ -44,20 +44,6 @@ class StartPage extends StatelessWidget {
     _currentPosition = await location.getLocation();
     _initialcameraposition =
         LatLng(_currentPosition.latitude, _currentPosition.longitude);
-    // location.onLocationChanged.listen((LocationData currentLocation) {
-    //   print("${currentLocation.longitude} : ${currentLocation.longitude}");
-    //   setState(() {
-    //     _currentPosition = currentLocation;
-    //     _initialcameraposition =
-    //         LatLng(_currentPosition.latitude, _currentPosition.longitude);
-    //     _getAddress(_currentPosition.latitude, _currentPosition.longitude)
-    //         .then((value) {
-    //       setState(() {
-    //         _address = "${value.first.addressLine}";
-    //       });
-    //     });
-    //   });
-    // });
 
     _getAddress(_currentPosition.latitude, _currentPosition.longitude)
         .then((value) {
@@ -111,29 +97,12 @@ class StartPage extends StatelessWidget {
                       fontSize: totalHeight * 25 / 700),
                   textAlign: TextAlign.center,
                 ),
-                // Text(
-                //   "restaurants around you",
-                //   style: TextStyle(
-                //       fontFamily: "Robonto",
-                //       fontWeight: FontWeight.normal,
-                //       fontSize: totalHeight * 25 / 700),
-                //   textAlign: TextAlign.center,
-                // ),
                 SizedBox(
                   height: totalHeight * 30 / 700,
                 ),
                 ElevatedButton(
                   onPressed: () async {
-                    // await getLoc();
-                    print('pressed');
                     await _showMyDialog(context);
-                    // Navigator.push(
-                    //   context,
-                    //   MaterialPageRoute(
-                    //     builder: (context) => MenuOptionSide(
-                    //         automatic: true, address: _address, reload: true),
-                    //   ),
-                    // );
                   },
                   style: ElevatedButton.styleFrom(
                     primary: Colors.red,

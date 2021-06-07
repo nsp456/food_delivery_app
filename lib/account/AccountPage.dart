@@ -51,7 +51,6 @@ class AccountScreen extends StatelessWidget {
                         String fname = snapshot.data.docs[i]['fname'];
                         String lname = snapshot.data.docs[i]['lname'];
                         name = fname + " " + lname;
-                        // print("name = $name");
                         break;
                       }
                     }
@@ -96,21 +95,6 @@ class AccountScreen extends StatelessWidget {
                       fontWeight: FontWeight.bold),
                 ),
               ),
-
-              // SizedBox(height: 10),
-              // Container(
-              //   alignment: Alignment.centerLeft,
-              //   padding: const EdgeInsets.only(left: 15.0),
-              //   height: 30.0,
-              //   color: Colors.grey[200],
-              //   child: Text(
-              //     'No Orders Yet !',
-              //     style: Theme.of(context)
-              //         .textTheme
-              //         .subtitle2
-              //         .copyWith(color: Colors.grey[700], fontSize: 12.0),
-              //   ),
-              // ),
               _PastOrderListView(ongoing: false),
             ],
           ),
@@ -147,16 +131,6 @@ class __AppBarState extends State<_AppBar> {
                       fontSize: totalHeight * 18.0 / 820,
                     ),
               ),
-              // InkWell(
-              //   child: Text(
-              //     'EDIT',
-              //     style: Theme.of(context)
-              //         .textTheme
-              //         .headline6
-              //         .copyWith(fontSize: 17.0, color: darkOrange),
-              //   ),
-              //   onTap: () {},
-              // )
             ],
           ),
           UIHelper.verticalSpaceSmall(),
@@ -172,7 +146,6 @@ class __AppBarState extends State<_AppBar> {
                 ),
               ),
               UIHelper.horizontalSpaceSmall(),
-              // Text(phone, style: subtitleStyle)
             ],
           ),
           UIHelper.verticalSpaceLarge(),
@@ -323,23 +296,18 @@ class __PastOrderListViewState extends State<_PastOrderListView> {
                   if (snapshot2.hasData) {
                     chefs = {};
                     for (int i = 0; i < snapshot2.data.docs.length; i++) {
-                      // print(snapshot2.data.docs[i].data());
                       chefs[snapshot2.data.docs[i].id] =
                           snapshot2.data.docs[i].data();
                     }
-                    // for (int j = 0; j < snapshot.data.docs.length; j++) {}
-                    // print('isDeliveredOrder=$isDeliveredOrder');
                     dishNameOrder.clear();
                     quantityOrder.clear();
                     chefNameOrder.clear();
                     costOrder.clear();
                     timeOrder.clear();
                     foods.clear();
-                    // docIdOrder.clear();
 
                     for (int i = 0; i < snapshot.data.docs.length; i++) {
                       var chef_detail = chefs[snapshot.data.docs[i]["chefId"]];
-                      // print(chef_detail);
                       bool isDelOrder = false;
                       var dd = snapshot.data.docs[i];
                       bool flag = true;
@@ -360,9 +328,6 @@ class __PastOrderListViewState extends State<_PastOrderListView> {
                         if (widget.ongoing != isDelOrder) {
                           FirebaseFirestore.instance
                               .collection('Orders')
-                              // .where(user.uid.toString(),
-                              //     isEqualTo: snapshot.data.docs[i]['userId']
-                              //         .toString())
                               .get()
                               .then(
                                 (QuerySnapshot snapshot) => {
@@ -390,26 +355,13 @@ class __PastOrderListViewState extends State<_PastOrderListView> {
                         }
                       }
                       // print('onging = ${widget.ongoing}');
-                      print('dno=$dishNameOrder');
-                      print('qno=$quantityOrder');
+                      // print('dno=$dishNameOrder');
+                      // print('qno=$quantityOrder');
                       // print('chefno=$chefNameOrder');
                       // print('costno=$costOrder');
                       // print('tno=$timeOrder');
                       Set<String> set = new Set<String>.from(docIdOrder);
                       l2 = new List<String>.from(set);
-                      // List<int> toRemove = [];
-                      // for (int i = 0; i < l2.length; i++) {
-                      //   if (snapshot.data.docs[i]["userId"] != user.uid) {
-                      //     toRemove.add(i);
-                      //   }
-                      // }
-                      // // print('toR=$toRemove');
-                      // for (int i = l2.length - 1; i >= 0; i--) {
-                      //   if (toRemove.contains(i)) {
-                      //     l2.removeAt(i);
-                      //   }
-                      // }
-                      // print('docIdOrder=$l2');
                     }
                   }
                   return Container();
@@ -484,10 +436,6 @@ class __PastOrderListViewState extends State<_PastOrderListView> {
                   context,
                   MaterialPageRoute(builder: (context) => SignIn()),
                   ModalRoute.withName("/signin"));
-              // Navigator.pushAndRemoveUntil(
-              //     context,
-              //     MaterialPageRoute(builder: (context) => SignIn()),
-              //     (Route<dynamic> route) => false);
             },
             child: Row(
               children: <Widget>[
@@ -577,20 +525,6 @@ class __PastOrdersListItemViewState extends State<_PastOrdersListItemView> {
       food += '${foodList[i]} x ${quantityList[i]}';
       food += '\n';
     }
-    // for (int i = 0; i < temp.length ~/ 2; i++) {
-    //   for (int j = 0; j < temp.length ~/ 2; j++) {
-    //   temp[i][j];
-    //   }
-    // }
-    // temp.forEach((t) {
-    //   temp2.add(t.split(', ').toString());
-    // });
-    // for (int i = 0; i < temp2.length ~/ 2; i++) {
-    //   temp3.add('${temp2[i]}x${temp2[i + temp2.length ~/ 2]}\n');
-    // }
-    // print('temp=$temp');
-    // print('temp2=$temp2');
-    // print('temp3=$temp3');
     double totalWidth = MediaQuery.of(context).size.width;
     double totalHeight = MediaQuery.of(context).size.height;
     return Container(
@@ -811,34 +745,16 @@ class _RatingPageState extends State<RatingPage> {
             setState(() {
               feedbackOut = feedback;
             });
-          }
-          // validator: (String value) {
-          //   return value.contains('@') ? 'Do not use the @ char.' : null;
-          // },
-          ),
+          }),
       StreamBuilder(
         stream: FirebaseFirestore.instance.collection('Orders').snapshots(),
         builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
           if (snapshot.hasData) {
-            print("here");
             for (int i = 0; i < snapshot.data.docs.length; i++) {
-              if (widget.costOrder.toString() ==
-                      snapshot.data.docs[i]['totalCost'].toString() &&
-                  widget.timeOrder.toString() ==
-                      snapshot.data.docs[i]['timeOrderPlaced'] &&
-                  user.uid == snapshot.data.docs[i]['userId'].toString()) {
-                print('updated');
-                // for (int j = 0; j < widget.docIdOrder.length; j++) {
-                // var dd = snapshot.data.docs[i];
-                // if (dd["timeOrderPlaced"] == widget.timeOrder &&
-                //     dd["totalCost"] == widget.costOrder) {
+              if (user.uid == snapshot.data.docs[i]['userId'].toString()) {
                 selectedId = widget.docIdOrder[i];
-                // uploadRating(selectedId, feedbackOut);
                 if (_rating == null) {
                   _rating = 0.0;
-                }
-                if (feedbackOut == "null") {
-                  feedbackOut = "No Feedback Given";
                 }
                 FirebaseFirestore.instance
                     .collection('Orders')
@@ -859,8 +775,4 @@ class _RatingPageState extends State<RatingPage> {
       )
     ]);
   }
-
-  // Future<void> uploadRating(String selectedId, String feedback) async {
-  //   print('inUpdate');
-  // }
 }

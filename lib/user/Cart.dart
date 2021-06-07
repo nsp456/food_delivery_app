@@ -145,32 +145,6 @@ class _FoodOrderPageState extends State<FoodOrderPage> {
                             ),
                           ),
                         ),
-                        // TextButton(
-                        //   style: ButtonStyle(
-                        //     overlayColor:
-                        //         MaterialStateProperty.resolveWith<Color>(
-                        //             (Set<MaterialState> states) {
-                        //       if (states.contains(MaterialState.focused))
-                        //         return Colors.red;
-                        //       return null; // Defer to the widget's default.
-                        //     }),
-                        //   ),
-                        //   onPressed: () {
-                        //     CartData.dishes.clear();
-                        //     Fluttertoast.showToast(
-                        //         msg: "Emptied Cart Successfully",
-                        //         toastLength: Toast.LENGTH_SHORT,
-                        //         gravity: ToastGravity.BOTTOM,
-                        //         timeInSecForIosWeb: 1,
-                        //         backgroundColor: Helper().button,
-                        //         textColor: Colors.white,
-                        //         fontSize: 16.0);
-                        //     // setState(() {
-                        //     //   dishes = [];
-                        //     // });
-                        //   },
-                        //   child: Text('Empty Cart'),
-                        // )
                       ],
                     ),
                     SizedBox(
@@ -817,12 +791,6 @@ class _CartItemState extends State<CartItem> {
                 ),
                 height: totalHeight * 80 / 700,
                 width: totalWidth * 120 / 420,
-                // child: Image.network(
-                //   widget.productImage,
-                //   height: totalHeight * 80 / 700,
-                //   width: totalWidth * 130 / 420,
-                //   // image: Image.network(),
-                // ),
               ),
               Padding(
                 padding: const EdgeInsets.fromLTRB(0, 8, 0, 8),
@@ -847,9 +815,6 @@ class _CartItemState extends State<CartItem> {
                                   fontWeight: FontWeight.w400),
                               textAlign: TextAlign.left,
                             ),
-                            // SizedBox(
-                            //   height: totalHeight * 5 / 700,
-                            // ),
                             Text(
                               widget.deliveryTime != '0'
                                   ? "${widget.productPrice}"
@@ -860,16 +825,6 @@ class _CartItemState extends State<CartItem> {
                                   fontWeight: FontWeight.w400),
                               textAlign: TextAlign.left,
                             ),
-                            // widget.deliveryTime != '0'
-                            //     ? Text(
-                            //         "Delivery :${widget.toTime}",
-                            //         style: TextStyle(
-                            //             fontSize: totalHeight * 12 / 700,
-                            //             color: Helper().normalText,
-                            //             fontWeight: FontWeight.w400),
-                            //         textAlign: TextAlign.left,
-                            //       )
-                            //     : new Container(width: 0.0, height: 0.0),
                             Text(
                               "Delivered On ${widget.selectedDate.split(' 20')[0]}\nBetween ${widget.fromTime}-${widget.toTime}",
                               style: TextStyle(

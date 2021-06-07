@@ -120,13 +120,6 @@ class _MapHomePageState extends State<MapHomePage> {
 
   void onMapCreated(GoogleMapController _cntrl) {
     _controller = _cntrl;
-    // location.onLocationChanged.listen((l) {
-    //   _controller.animateCamera(
-    //     CameraUpdate.newCameraPosition(
-    //       CameraPosition(target: LatLng(l.latitude, l.longitude), zoom: 15),
-    //     ),
-    //   );
-    // });
   }
 
   _handleTap(LatLng abc) {
@@ -138,16 +131,8 @@ class _MapHomePageState extends State<MapHomePage> {
           draggable: true));
       tappedPoint = abc;
       print(tappedPoint);
-      // _currentPosition = tappedPoint;
-      // _currentPosition.latitude = tappedPoint.latitude;
     });
   }
-
-  // void onMapCreated(controller) {
-  //   setState(() {
-  //     _controller = controller;
-  //   });
-  // }
 
   Future<void> getLoc() async {
     bool _serviceEnabled;
@@ -190,7 +175,6 @@ class _MapHomePageState extends State<MapHomePage> {
     final coordinates = new Coordinates(lat, lang);
     List<Address> add =
         await Geocoder.local.findAddressesFromCoordinates(coordinates);
-    print("randim get add");
     return add;
   }
 }
@@ -430,13 +414,6 @@ class _HomePageState extends State<HomePage> {
         textColor: Colors.white,
         fontSize: 16.0);
     setState(() {});
-    // rebuildAllChildren(context);
-    // EatNow(cartData: new CartData());
-
-    // Navigator.push(context,
-    //     new MaterialPageRoute(builder: (context) => this.build(context)));
-    // Navigator.pushReplacement(context,
-    //     MaterialPageRoute(builder: (BuildContext context) => super.widget));
   }
 
   Widget build(BuildContext context) {
@@ -485,14 +462,6 @@ class _HomePageState extends State<HomePage> {
             icon: Icon(Icons.edit, color: help.heading),
             onPressed: () async {
               await _showModalBottomSheet(context);
-              // Navigator.push(
-              //   context,
-              //   MaterialPageRoute(
-              //     builder: (context) =>
-              //         MenuOptionSide(automatic: false, address: _address),
-              //   ),
-              // );
-              // await refresher_funct();
             },
           ),
         ],
@@ -593,13 +562,6 @@ class _HomePageState extends State<HomePage> {
                 right: totalWidth * 15 / 420,
                 top: totalHeight * 5 / 700,
                 bottom: totalHeight * 10 / 700),
-            // decoration: new BoxDecoration(boxShadow: [
-            //   new BoxShadow(
-            //     color: _hasBeenPressed ? Color(0xFFFF785B) : Color(0xffdee8ff),
-            //     blurRadius: 25.0,
-            //     offset: Offset(0.0, 0.75),
-            //   ),
-            // ]),
             child: Container(
               decoration: BoxDecoration(
                 color: Helper().button,
@@ -654,20 +616,7 @@ class _HomePageState extends State<HomePage> {
     _currentPosition = await location.getLocation();
     _initialcameraposition =
         LatLng(_currentPosition.latitude, _currentPosition.longitude);
-    // location.onLocationChanged.listen((LocationData currentLocation) {
-    //   print("${currentLocation.longitude} : ${currentLocation.longitude}");
-    //   setState(() {
-    //     _currentPosition = currentLocation;
-    //     _initialcameraposition =
-    //         LatLng(_currentPosition.latitude, _currentPosition.longitude);
-    //     _getAddress(_currentPosition.latitude, _currentPosition.longitude)
-    //         .then((value) {
-    //       setState(() {
-    //         _address = "${value.first.addressLine}";
-    //       });
-    //     });
-    //   });
-    // });
+
     _getAddress(_currentPosition.latitude, _currentPosition.longitude).then(
       (value) {
         setState(
@@ -746,7 +695,7 @@ class PopularFoodTiles extends StatefulWidget {
   Function refresh;
   PopularFoodTiles(
       this.name,
-      @required this.address,
+      this.address,
       this.chefAddress,
       this.rating,
       this.price,
@@ -1074,24 +1023,6 @@ class _PopularFoodTilesState extends State<PopularFoodTiles> {
                         color: Colors.white,
                       ),
                     )),
-                // Positioned(
-                //   right: 3,
-                //   top: 3,
-                //   child: Container(
-                //     decoration: new BoxDecoration(
-                //       color: Colors.white.withOpacity(0.6),
-                //       borderRadius: BorderRadius.all(Radius.circular(10)),
-                //     ),
-                //     child: Text(
-                //       widget.time,
-                //       style: TextStyle(
-                //           fontSize: totalHeight * 12 / 700,
-                //           color: Colors.black,
-                //           fontWeight: FontWeight.bold),
-                //     ),
-                //     padding: EdgeInsets.all(4.0),
-                //   ),
-                // )
               ])
             ]),
       ),
@@ -1729,24 +1660,6 @@ class _BestFoodTilesState extends State<BestFoodTiles> {
                         color: Colors.white,
                       ),
                     )),
-                // Positioned(
-                //   right: 3,
-                //   top: 3,
-                //   child: Container(
-                //     decoration: new BoxDecoration(
-                //       color: Colors.white.withOpacity(0.6),
-                //       borderRadius: BorderRadius.all(Radius.circular(10)),
-                //     ),
-                //     child: Text(
-                //       widget.time,
-                //       style: TextStyle(
-                //           fontSize: totalHeight * 12 / 700,
-                //           color: Colors.black,
-                //           fontWeight: FontWeight.bold),
-                //     ),
-                //     padding: EdgeInsets.all(4.0),
-                //   ),
-                // )
               ])
             ]),
       ),
