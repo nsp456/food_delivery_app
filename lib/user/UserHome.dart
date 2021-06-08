@@ -1198,7 +1198,7 @@ class _PopularFoodItemsState extends State<PopularFoodItems> {
                       }
                     }
                   }
-                  dishes.sort((a, b) => b.getCount().compareTo(a.getCount()));
+                  dishes.sort((a, b) => b.rating.compareTo(a.rating));
                   // if (dishes.length > 20) dishes = dishes.take(20).toList();
                   // print(dishes);
 
