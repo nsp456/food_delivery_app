@@ -85,75 +85,68 @@ class _EatTomorrowState extends State<EatTomorrow> {
                     // print(chefs);
                     dishes = [];
                     for (int i = 0; i < snapshot.data.docs.length; i++) {
-                      // var tmprser = new DateFormat("dd-MM-yyyy HH:mm");
-                      // var tmprser2 = new DateFormat("dd-MM-yyyy");
-                      // print("\t" +
-                      //     tmprser
-                      //         .parse(snapshot.data.docs[i]["fromDate"]
-                      //                 .toString() +
-                      //             " " +
-                      //             snapshot.data.docs[i]["toTime"].toString())
-                      //         .toString());
+                      final now = new DateTime.now();
 
-                      // // var nextDate = tmprser.parse(
-                      // //     snapshot.data.docs[i]["fromDate"].toString() +
-                      // //         " " +
-                      // //         snapshot.data.docs[i]["toTime"].toString());
-
-                      // var checkTime = tmprser2
-                      //     .parse(snapshot.data.docs[i]["fromDate"].toString())
-                      //     .compareTo(tmprser2.parse(now.day.toString() +
-                      //         "-" +
-                      //         now.month.toString() +
-                      //         "-" +
-                      //         now.year.toString()));
+                      var tmprser = new DateFormat("dd-MM-yyyy HH:mm");
+                      var tmprser2 = new DateFormat("dd-MM-yyyy");
+                      print("\t" +
+                          tmprser
+                              .parse(snapshot.data.docs[i]["fromDate"]
+                                      .toString() +
+                                  " " +
+                                  snapshot.data.docs[i]["toTime"].toString())
+                              .toString());
+                      // var nextDate = tmprser.parse(
+                      //     snapshot.data.docs[i]["fromDate"].toString() +
+                      //         " " +
+                      //         snapshot.data.docs[i]["toTime"].toString());
+                      var checkTime = tmprser2
+                          .parse(snapshot.data.docs[i]["fromDate"].toString())
+                          .compareTo(tmprser2.parse(now.day.toString() +
+                              "-" +
+                              now.month.toString() +
+                              "-" +
+                              now.year.toString()));
                       // " " +
                       // now.hour.toString() +
                       // ":" +
                       // now.minute.toString()));
-                      // print("\n" + checkTime.toString());
-                      // if (checkTime > 0) {
-                      if (true) {
+                      print("\n" + checkTime.toString());
+                      if (checkTime > 0) {
                         // print("\n" + checkTime.toString());
 
                         var chef_detail =
                             chefs[snapshot.data.docs[i]["chefId"]];
                         // print(chef_detail);
                         var dd = snapshot.data.docs[i];
-
                         //Take the difference of the toTime of item from now
-
-                        // var leftTime = tmprser
-                        //     .parse(
-                        //         (snapshot.data.docs[i]["fromDate"].toString() +
-                        //             " " +
-                        //             snapshot.data.docs[i]["toTime"]
-                        //                 .toString()
-                        //                 .toString()))
-                        //     .difference(tmprser.parse(now.day.toString() +
-                        //         "-" +
-                        //         now.month.toString() +
-                        //         "-" +
-                        //         now.year.toString() +
-                        //         " " +
-                        //         now.hour.toString() +
-                        //         ":" +
-                        //         now.minute.toString().toString()));
-
-                        // print("LeftTime" + leftTime.inMinutes.toString());
-
-                        // // var leftsecond_format =
-                        // //     new DateFormat("dd-MM-yyyy HH:mm")
-                        // //         .parse(leftTime.inHours.toString());
-
-                        // // var leftseconds = leftsecond_format.day * 24 * 60 +
-                        // //     leftsecond_format.hour * 60 +
-                        // //     leftsecond_format.minute;
-                        // var leftseconds = leftTime.inMinutes.toString();
-                        // // print(leftTime);
-                        // print("\n");
-                        // print(leftseconds);
-
+                        var leftTime = tmprser
+                            .parse(
+                                (snapshot.data.docs[i]["fromDate"].toString() +
+                                    " " +
+                                    snapshot.data.docs[i]["toTime"]
+                                        .toString()
+                                        .toString()))
+                            .difference(tmprser.parse(now.day.toString() +
+                                "-" +
+                                now.month.toString() +
+                                "-" +
+                                now.year.toString() +
+                                " " +
+                                now.hour.toString() +
+                                ":" +
+                                now.minute.toString().toString()));
+                        print("LeftTime" + leftTime.inMinutes.toString());
+                        // var leftsecond_format =
+                        //     new DateFormat("dd-MM-yyyy HH:mm")
+                        //         .parse(leftTime.inHours.toString());
+                        // var leftseconds = leftsecond_format.day * 24 * 60 +
+                        //     leftsecond_format.hour * 60 +
+                        //     leftsecond_format.minute;
+                        var leftseconds = leftTime.inMinutes.toString();
+                        // print(leftTime);
+                        print("\n");
+                        print(leftseconds);
                         if (chef_detail != null) {
                           // var toTime =
                           //     new DateFormat("HH:mm").parse(dd["toTime"]);
@@ -188,6 +181,7 @@ class _EatTomorrowState extends State<EatTomorrow> {
                         }
                       }
                     }
+
                     print(dishes);
 
                     return Column(

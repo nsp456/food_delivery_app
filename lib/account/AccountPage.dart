@@ -324,6 +324,7 @@ class __PastOrderListViewState extends State<_PastOrderListView> {
                         flag = true;
                       }
 
+                      // Get all orders for the currently logged in user
                       if (user.uid == snapshot.data.docs[i]['userId']) {
                         if (widget.ongoing != isDelOrder) {
                           FirebaseFirestore.instance
